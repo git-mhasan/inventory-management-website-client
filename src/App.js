@@ -5,6 +5,9 @@ import Home from './components/Pages/Home/Home';
 import About from './components/Pages/About/About';
 import Header from './components/Shared/Header/Header';
 import Footer from './components/Shared/Footer/Footer';
+import Inventories from './components/Pages/Inventories/Inventories';
+import SingleItem from './components/Pages/SingleItem/SingleItem';
+import Login from './components/Pages/Login/Login';
 
 function App() {
   return (
@@ -13,6 +16,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/inventories" element={<Inventories />} />
+        <Route path="/inventory/:id" element={<SingleItem />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/about" element={<About />} />
       </Routes>
       <Footer></Footer>
