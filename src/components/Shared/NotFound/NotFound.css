@@ -1,0 +1,30 @@
+.four-oh-four-div {
+    background-color: #1A1A1A;
+    height: 90vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 12vh;
+    /* justify-content: center; */
+}
+
+.four-oh-four {
+
+    font-family: 'Alfa Slab One', cursive;
+    font-size: 150px;
+    font-weight: 900;
+    color: white;
+}
+
+.button {
+    color: #1A1A1A;
+    border: 0;
+    outline: 1px solid white;
+    border-radius: 5px;
+    padding: 8px 16px;
+    background-color: #FEAF33;
+    font-weight: 700;
+    cursor: pointer;
+
+}
