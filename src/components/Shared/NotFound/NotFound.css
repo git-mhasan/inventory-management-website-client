@@ -1,6 +1,6 @@
 .four-oh-four-div {
     background-color: #1A1A1A;
-    height: 90vh;
+    height: 92vh;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -14,17 +14,29 @@
     font-family: 'Alfa Slab One', cursive;
     font-size: 150px;
     font-weight: 900;
-    color: white;
+    color: #fffee2;
+}
+
+.horizontal-seperator {
+    width: 50%;
+    height: 1px;
+    background-color: #fffee2;
+    margin: 8px 0 16px 0;
 }
 
 .button {
     color: #1A1A1A;
     border: 0;
-    outline: 1px solid white;
+    outline: 1px solid #fffee2;
     border-radius: 5px;
+    margin: 16px 0;
     padding: 8px 16px;
-    background-color: #FEAF33;
+    background-color: orange;
     font-weight: 700;
     cursor: pointer;
 
+}
+
+.button:hover {
+    background-color: #FEAF33;
 }

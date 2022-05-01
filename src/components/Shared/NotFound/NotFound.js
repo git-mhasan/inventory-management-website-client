@@ -5,6 +5,7 @@ const NotFound = () => {
     return (
         <div className="four-oh-four-div">
             <div className='four-oh-four'>404</div>
+            <div className='horizontal-seperator'></div>
             <button className='button'>Go to Homepage</button>
         </div>
     );
