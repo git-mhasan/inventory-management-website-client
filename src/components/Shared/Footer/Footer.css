@@ -1,8 +1,8 @@
 .footer-container {
-    position: absolute;
+    /* position: absolute; */
     width: 100%;
-    height: 8vh;
-    bottom: 0;
+    height: 100px;
+    /* bottom: 0; */
     border: 1px solid black;
     background-color: lightgray;
     padding: 8px 0;

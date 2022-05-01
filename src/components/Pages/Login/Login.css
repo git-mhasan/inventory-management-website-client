@@ -1,8 +1,9 @@
+input[type="text"],
 input[type="email"],
 input[type="password"] {
-    /* margin: 0 auto; */
+    padding: 0 0 0 4px;
     height: 30px;
-    width: 80%;
+    width: 75%;
     border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
@@ -16,7 +17,6 @@ input[type="submit"] {
     background-color: orange;
     font-weight: 700;
     cursor: pointer;
-
 }
 
 input[type="submit"]:hover {
@@ -28,6 +28,25 @@ input[type="submit"]:hover {
     justify-content: center;
 }
 
+
+.input-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    margin: 18px;
+}
+
+.signin-title {
+    margin: 30px 0;
+}
+
+.login-seperator {
+    width: 90%;
+    height: 1px;
+    background-color: #1A1A1A;
+    margin: 8px auto;
+}
+
 .login-form {
     width: 40%;
     margin: 50px auto;
@@ -36,28 +55,20 @@ input[type="submit"]:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-/* .list-container {
-    display: flex;
-} */
-
-/* .error {
-    color: red;
-    font-size: 12px;
+@media only screen and (max-width: 600px) {
+    .login-form {
+        width: 80%;
+    }
 }
 
-.title {
-    font-size: 25px;
-    margin-bottom: 20px;
-} */
-
-.input-container {
-    display: flex;
-    /* flex-direction: column; */
-    justify-content: space-between;
-    gap: 8px;
-    margin: 18px;
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+    .login-form {
+        width: 60%;
+    }
 }
 
-.signin-title {
-    margin: 30px 0;
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+    .login-form {
+        width: 50%;
+    }
 }

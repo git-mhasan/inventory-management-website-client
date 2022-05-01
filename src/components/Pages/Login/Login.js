@@ -1,7 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
 import './Login.css';
 
+
 const Login = () => {
+
+    const handlePassReset = () => {
+        alert("password reset!");
+    }
+
     return (
         <div>
             <div className="login-form">
@@ -16,11 +24,15 @@ const Login = () => {
                         <label>Password: </label>
                         <input type="password" name="pass" required />
                     </div>
-                    <div><p>Not registered?</p></div>
+                    <div><p style={{ display: "inline" }}>Forget Password?</p><Link to="" onClick={handlePassReset}>Reset</Link></div>
+                    <div><p style={{ display: "inline" }}>Not registered?</p><Link to="/signup">Sign Up</Link></div>
                     <div className="button-container">
                         <input type="submit" />
                     </div>
+
                 </form>
+                <div className='login-seperator '></div>
+                <SocialLogin></SocialLogin>
             </div>
         </div>
     );
