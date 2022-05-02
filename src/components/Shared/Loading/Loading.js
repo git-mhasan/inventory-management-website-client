@@ -3,8 +3,10 @@ import './Loading.css';
 
 const Loading = () => {
     return (
-        <div>
-            <h3>Loading component</h3>
+        <div style={{ height: '100px' }}>
+            <div className='loader'>
+                Loading ....
+            </div>
         </div>
     );
 };
