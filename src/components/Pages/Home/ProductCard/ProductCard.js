@@ -6,7 +6,7 @@ const ProductCard = ({ product }) => {
     return (
         <div className='product-card'>
             <img src={img} alt="" />
-            {console.log(product)}
+            <h4>{name.toUpperCase()}</h4>
         </div>
     );
 };
