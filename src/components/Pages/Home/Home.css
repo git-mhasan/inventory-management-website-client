@@ -1,0 +1,11 @@
+.home-container {
+    max-width: 1000px;
+    margin: 20px auto;
+
+}
+
+.product-card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
