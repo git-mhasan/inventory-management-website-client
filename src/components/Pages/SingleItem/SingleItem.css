@@ -1,0 +1,23 @@
+.single-item-card {
+    margin: 30px auto;
+    display: flex;
+    width: 800px;
+    height: 430px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.single-item-card-right {
+    padding: 25px;
+    background-color: #fffee2;
+}
+
+.single-item-card-left {
+    border: 1px solid orange;
+    padding: 25px;
+}
+
+.horizontal-black-line {
+    margin: 20px;
+    height: 1px;
+    background-color: black;
+}

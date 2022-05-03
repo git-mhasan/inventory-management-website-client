@@ -4,7 +4,6 @@ import { Routes, Route } from "react-router-dom";
 import Home from './components/Pages/Home/Home';
 import About from './components/Pages/About/About';
 import Header from './components/Shared/Header/Header';
-import Footer from './components/Shared/Footer/Footer';
 import Inventories from './components/Pages/Inventories/Inventories';
 import SingleItem from './components/Pages/SingleItem/SingleItem';
 import Login from './components/Pages/Login/Login';
@@ -25,7 +24,6 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
-      <Footer></Footer>
     </div>
   );
 }

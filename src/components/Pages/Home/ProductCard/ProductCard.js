@@ -5,6 +5,7 @@ import './ProductCard.css';
 const ProductCard = ({ product }) => {
     const navigate = useNavigate();
     const { _id, name, price, img, quantity, desc, supplier } = product;
+
     const navigateManageStock = (id) => {
         navigate(`/inventory/${id}`);
     }

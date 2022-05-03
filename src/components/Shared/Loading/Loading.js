@@ -5,7 +5,7 @@ const Loading = () => {
     return (
         <div style={{ height: '100px' }}>
             <div className='loader'>
-                Loading ....
+                Loading ...
             </div>
         </div>
     );
