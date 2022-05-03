@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import useProduct from '../../../hooks/useProduct';
-import Footer from '../../Shared/Footer/Footer';
 import Loading from '../../Shared/Loading/Loading';
 import './Home.css';
 import ProductCard from './ProductCard/ProductCard';
@@ -29,7 +28,7 @@ const Home = () => {
                 </div>
                 <button className='button' onClick={navigateToManageInventories}>Manage Inventories</button>
             </div>}
-            <Footer></Footer>
+
         </div>
     );
 };
