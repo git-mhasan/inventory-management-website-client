@@ -1,19 +1,42 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import './Login.css';
+import auth from '../../../firebase.init';
+import Loading from '../../Shared/Loading/Loading';
 
 
 const Login = () => {
+
+    //using React firebase hook states for signin
+    const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
+    const navigate = useNavigate();
+
+
+    const handleLogin = event => {
+        event.preventDefault();
+        const email = event.target[0].value;
+        const password = event.target[1].value;
+
+        signInWithEmailAndPassword(email, password);
+    }
 
     const handlePassReset = () => {
         alert("password reset!");
     }
 
+    if (loading) {
+        return <Loading></Loading>
+    }
+    if (user) {
+        navigate('/home');
+    }
+
     return (
         <div>
             <div className="login-form">
-                <form>
+                <form onSubmit={handleLogin}>
                     <div><h3 className='signin-title'>Sign In</h3></div>
                     <div className="input-container">
                         <label>Email: </label>
