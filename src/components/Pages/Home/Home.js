@@ -15,7 +15,7 @@ const Home = () => {
 
     return (
         <div className='home-container'>
-            {products?.length == 0 ? <Loading></Loading> : <div>
+            {products?.length === 0 ? <Loading></Loading> : <div>
                 <div className='product-card-container'>
                     {
                         products.map(product =>

@@ -8,7 +8,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;
-    align-items: center;
+    align-content: center;
     justify-content: center;
 }
 
@@ -30,6 +30,7 @@
     .home-container {
         max-width: 680px;
         margin: 20px auto;
+        justify-content: center;
 
     }
 
@@ -43,6 +44,8 @@
     .home-container {
         max-width: 800px;
         margin: 20px auto;
+        justify-content: center;
+
     }
 
     .product-card-container {

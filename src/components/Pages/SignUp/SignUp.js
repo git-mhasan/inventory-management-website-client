@@ -1,13 +1,46 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+
+import auth from '../../../firebase.init';
 import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
 import './SignUp.css';
+import Loading from '../../Shared/Loading/Loading';
+import { toast, ToastContainer } from 'react-toastify';
 
 const SignUp = () => {
+    let loadingAnimation;
+    // let errorMessage;
+    const navigate = useNavigate();
+    const [createUserWithEmailAndPassword, user, loading, errorSignUp] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+    const [updateProfile, updating, errorProfileUpdate] = useUpdateProfile(auth);
+
+    const handleFirebaseSignUp = async (event) => {
+        event.preventDefault();
+        const name = event.target[0].value;
+        const email = event.target[1].value;
+        const password = event.target[2].value;
+        await createUserWithEmailAndPassword(email, password);
+        await updateProfile({ displayName: name });
+        console.log('Updated profile');
+        navigate('/home');
+
+    }
+
+    if (loading) {
+        loadingAnimation = "loading..."
+    }
+    if (user) {
+        navigate('/home');
+    }
+    if (errorSignUp) {
+        toast(errorSignUp?.message);
+    }
+
     return (
         <div>
             <div className="login-form">
-                <form>
+                <form onSubmit={handleFirebaseSignUp}>
                     <div><h3 className='signin-title'>Sign Up</h3></div>
                     <div className="input-container">
                         <label>Name: </label>
@@ -28,11 +61,14 @@ const SignUp = () => {
                     <div className="button-container">
                         <input type="submit" />
                     </div>
-
                 </form>
+                <div >
+                    {loadingAnimation}
+                </div>
                 <div className='login-seperator '></div>
                 <SocialLogin></SocialLogin>
             </div>
+            <ToastContainer />
         </div>
     );
 };

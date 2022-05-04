@@ -10,6 +10,9 @@ import Login from './components/Pages/Login/Login';
 import NotFound from './components/Shared/NotFound/NotFound';
 import SignUp from './components/Pages/SignUp/SignUp';
 import Footer from './components/Shared/Footer/Footer';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import RequireAuth from './components/Shared/RequireAuth/RequireAuth';
 
 function App() {
   return (
@@ -18,14 +21,20 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/inventories" element={<Inventories />} />
-        <Route path="/inventory/:id" element={<SingleItem />} />
+        <Route path="/inventories" element={
+          <RequireAuth>
+            <Inventories />
+          </RequireAuth>} />
+        <Route path="/inventory/:id" element={<RequireAuth>
+          <SingleItem />
+        </RequireAuth>} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
       <Footer></Footer>
+      <ToastContainer />
     </div>
   );
 }
