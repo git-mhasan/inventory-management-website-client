@@ -1,17 +1,17 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
-
 import auth from '../../../firebase.init';
 import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
 import './SignUp.css';
-import Loading from '../../Shared/Loading/Loading';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const SignUp = () => {
     let loadingAnimation;
     // let errorMessage;
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
     const [createUserWithEmailAndPassword, user, loading, errorSignUp] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
     const [updateProfile, updating, errorProfileUpdate] = useUpdateProfile(auth);
 
@@ -22,19 +22,19 @@ const SignUp = () => {
         const password = event.target[2].value;
         await createUserWithEmailAndPassword(email, password);
         await updateProfile({ displayName: name });
-        console.log('Updated profile');
-        navigate('/home');
+        // console.log('Updated profile');
+        // navigate('/home');
 
     }
 
-    if (loading) {
+    if (loading || updating) {
         loadingAnimation = "loading..."
     }
     if (user) {
-        navigate('/home');
+        navigate(from, { replace: true });
     }
-    if (errorSignUp) {
-        toast(errorSignUp?.message);
+    if (errorSignUp || errorProfileUpdate) {
+        toast(errorSignUp?.message || errorProfileUpdate?.message);
     }
 
     return (
@@ -68,7 +68,7 @@ const SignUp = () => {
                 <div className='login-seperator '></div>
                 <SocialLogin></SocialLogin>
             </div>
-            <ToastContainer />
+
         </div>
     );
 };

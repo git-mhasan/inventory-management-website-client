@@ -1,5 +1,5 @@
 .four-oh-four-div {
-    background-color: #1A1A1A;
+    background-color: white;
     height: 92vh;
     width: 100%;
     display: flex;
@@ -14,13 +14,15 @@
     font-family: 'Alfa Slab One', cursive;
     font-size: 150px;
     font-weight: 900;
-    color: #fffee2;
+    color: black;
+    /* color: #fffee2; */
 }
 
 .horizontal-seperator {
     width: 50%;
     height: 1px;
-    background-color: #fffee2;
+    background-color: black;
+    /* background-color: #fffee2; */
     margin: 8px 0 16px 0;
 }
 

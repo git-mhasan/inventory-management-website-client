@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const useProduct = () => {
     const [products, setProduct] = useState([]);
@@ -13,7 +14,7 @@ const useProduct = () => {
                 const response = await axios.get(uri);
                 setProduct(response.data);
             } catch (error) {
-                console.error(error);
+                toast(error);
             }
         }
         getUser();

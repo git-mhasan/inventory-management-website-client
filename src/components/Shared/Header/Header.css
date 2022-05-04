@@ -1,12 +1,27 @@
+.header-full-container {
+
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    border: 1px solid #1A1A1A;
+    background-color: #1A1A1A;
+    padding: 8px 30px;
+    margin-bottom: 40px;
+}
+
 .header-container {
-    border: 1px solid black;
-    background-color: black;
-    padding: 8px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    height: 80px;
+    margin: 0 auto;
 }
 
 a {
     text-decoration: none;
-    margin: 0 10px;
+    margin: 0 5px;
 }
 
 .selected {
@@ -17,4 +32,41 @@ a {
 .unselected {
     font-weight: 700;
     color: #fffee2;
+}
+
+
+.header-menu {
+    display: inline;
+}
+
+.ham-button {
+    display: none;
+    border: none;
+    background: none;
+    color: white;
+    cursor: pointer;
+
+}
+
+@media only screen and (max-width: 768px) {
+    .header-menu {
+        display: none;
+
+    }
+
+    .header-menu-closed {
+        display: flex;
+        flex-direction: column;
+        background-color: #1A1A1A;
+        position: absolute;
+        top: 78px;
+        left: 0;
+        width: 100vw;
+        padding: 20px 0;
+    }
+
+    .ham-button {
+        display: inline;
+        margin-right: 25px;
+    }
 }

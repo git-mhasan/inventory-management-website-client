@@ -1,17 +1,19 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import './Login.css';
 import auth from '../../../firebase.init';
-import Loading from '../../Shared/Loading/Loading';
+import { toast } from 'react-toastify';
 
 
 const Login = () => {
-
+    let loadingAnimation;
     //using React firebase hook states for signin
     const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
 
     const handleLogin = event => {
@@ -26,11 +28,15 @@ const Login = () => {
         alert("password reset!");
     }
 
+    if (error) {
+        toast(error?.message);
+    }
+
     if (loading) {
-        return <Loading></Loading>
+        loadingAnimation = "loading..."
     }
     if (user) {
-        navigate('/home');
+        navigate(from, { replace: true });
     }
 
     return (
@@ -54,6 +60,7 @@ const Login = () => {
                     </div>
 
                 </form>
+                {loadingAnimation}
                 <div className='login-seperator '></div>
                 <SocialLogin></SocialLogin>
             </div>
