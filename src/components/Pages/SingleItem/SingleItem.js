@@ -9,19 +9,12 @@ import './SingleItem.css';
 const SingleItem = () => {
     const { id } = useParams();
     const [product, setProduct] = useProductById(id);
-    const uri = `http://localhost:5000/product/${id}`;
+    // const uri = `http://localhost:5000/product/${id}`;
+    const uri = `https://secret-reaches-38095.herokuapp.com/product/${id}`;
 
     const { _id, name, price, img, quantity, desc, supplier, sold } = product;
 
-    const updateQuantity = async () => {
-        if (quantity > 0 && sold >= 0) {
-            product.quantity = (parseInt(quantity) - 1).toString();
-            product.sold = (parseInt(sold) + 1).toString();
-        } else {
-            toast("Product out of Stock. Want to consider Restocking?")
-        }
-        // setUpdatedProduct(product);
-
+    const updateApiCall = async (product) => {
         await axios.put(uri, product)
             .then(async resp => {
                 await resp.data.acknowledged
@@ -29,13 +22,34 @@ const SingleItem = () => {
                     setProduct(product)
                     :
                     toast("Couldnot Deliver item.")
-                console.log(resp.data)
             })
             .catch(error => {
                 toast(error);
             })
+    }
 
-        console.log(product.quantity);
+    const updateQuantity = (event) => {
+        event.preventDefault();
+        const inputQuantity = parseInt(event.target[0].value);
+        if (inputQuantity > 0) {
+            product.quantity = (parseInt(quantity) + inputQuantity).toString();
+            updateApiCall(product);
+            event.target[0].value = '';
+        } else {
+            toast("Please enter non-negative number to update stock.")
+        }
+        // console.log(quantity);
+    }
+
+    const updateStock = async () => {
+        if (quantity > 0 && sold >= 0) {
+            product.quantity = (parseInt(quantity) - 1).toString();
+            product.sold = (parseInt(sold) + 1).toString();
+            updateApiCall(product);
+        } else {
+            toast("Product out of Stock. Want to consider Restocking?")
+        }
+
     }
     return (
         <div>
@@ -48,7 +62,7 @@ const SingleItem = () => {
                         <p>Unit Price: {price} tk.</p>
                         <p>Sold: {sold} psc</p>
                         <p>In stock: {quantity} pcs</p>
-                        <button className="button" onClick={updateQuantity}>Deliver</button>
+                        <button className="button" onClick={updateStock}>Deliver</button>
                     </div>
                     <div className='single-item-card-right'>
                         <h3>{name?.toUpperCase()}</h3>
@@ -56,7 +70,7 @@ const SingleItem = () => {
                         <p className='product-card-desc'>{desc?.length > 350 ? desc?.slice(0, 350) + "..." : desc}</p>
                         <div className="horizontal-black-line"></div>
 
-                        <form>
+                        <form onSubmit={updateQuantity}>
                             <label>
                                 Want to Restock Product?
                                 <input type="number" placeholder="Enter Quantity" required style={{ margin: '8px', padding: '0 8px' }} />

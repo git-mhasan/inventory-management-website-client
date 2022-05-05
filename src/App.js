@@ -13,6 +13,7 @@ import Footer from './components/Shared/Footer/Footer';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import RequireAuth from './components/Shared/RequireAuth/RequireAuth';
+import AddNewItem from './components/Pages/Inventories/AddNewItem/AddNewItem';
 
 
 function App() {
@@ -32,6 +33,10 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/addnew" element={
+          <RequireAuth>
+            <AddNewItem />
+          </RequireAuth>} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
       <Footer></Footer>

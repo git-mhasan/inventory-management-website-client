@@ -1,0 +1,26 @@
+.addnew-form {
+    width: 70%;
+    margin: 50px auto;
+    background-color: white;
+    padding: 16px;
+    border: 1px solid orange;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+}
+
+@media only screen and (max-width: 600px) {
+    .addnew-form {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+    .addnew-form {
+        width: 90%;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+    .addnew-form {
+        width: 80%;
+    }
+}

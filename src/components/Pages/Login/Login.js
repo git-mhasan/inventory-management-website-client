@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import './Login.css';
 import auth from '../../../firebase.init';
 import { toast } from 'react-toastify';
+import Loading from '../../Shared/Loading/Loading';
 
 
 const Login = () => {
-    let loadingAnimation;
     //using React firebase hook states for signin
     const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
+    const [sendPasswordResetEmail, sending, errorReset] = useSendPasswordResetEmail(auth);
     const navigate = useNavigate();
+    const emailRef = useRef("");
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
 
@@ -24,29 +26,37 @@ const Login = () => {
         signInWithEmailAndPassword(email, password);
     }
 
-    const handlePassReset = () => {
-        alert("password reset!");
+    const handlePassReset = async (event) => {
+        const email = emailRef.current.value;
+        if (!!email) {
+            await sendPasswordResetEmail(email);
+            toast('Sent Password Reset email.');
+        } else {
+            toast('Please write your email.');
+        }
+        // alert("password reset!");
     }
 
-    if (error) {
-        toast(error?.message);
+
+    if (error || errorReset) {
+        toast(error?.message || errorReset?.message);
     }
 
-    if (loading) {
-        loadingAnimation = "loading..."
+    if (loading || sending) {
+        return <div style={{ minHeight: "60vh" }}><Loading ></Loading></div>
     }
     if (user) {
         navigate(from, { replace: true });
     }
 
     return (
-        <div>
+        <div style={{ minHeight: "75vh" }}>
             <div className="login-form">
                 <form onSubmit={handleLogin}>
                     <div><h3 className='signin-title'>Sign In</h3></div>
                     <div className="input-container">
                         <label>Email: </label>
-                        <input type="email" name="email" required />
+                        <input ref={emailRef} type="email" name="email" required />
 
                     </div>
                     <div className="input-container">
@@ -60,9 +70,11 @@ const Login = () => {
                     </div>
 
                 </form>
-                {loadingAnimation}
+                {/* {loadingAnimation} */}
                 <div className='login-seperator '></div>
-                <SocialLogin></SocialLogin>
+
+                <SocialLogin ></SocialLogin>
+
             </div>
         </div>
     );

@@ -5,7 +5,7 @@ input[type="password"] {
     padding: 0 0 0 4px;
     margin-left: 5px;
     height: 30px;
-    width: 75%;
+    width: 72%;
     border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
@@ -36,6 +36,12 @@ input[type="submit"]:hover {
     justify-content: space-between;
     gap: 8px;
     margin: 18px;
+}
+
+.input-pair {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    justify-content: space-around;
 }
 
 .signin-title {

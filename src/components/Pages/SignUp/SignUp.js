@@ -5,6 +5,7 @@ import auth from '../../../firebase.init';
 import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
 import './SignUp.css';
 import { toast } from 'react-toastify';
+import Loading from '../../Shared/Loading/Loading';
 
 const SignUp = () => {
     let loadingAnimation;
@@ -22,13 +23,10 @@ const SignUp = () => {
         const password = event.target[2].value;
         await createUserWithEmailAndPassword(email, password);
         await updateProfile({ displayName: name });
-        // console.log('Updated profile');
-        // navigate('/home');
-
     }
 
     if (loading || updating) {
-        loadingAnimation = "loading..."
+        return <div style={{ minHeight: "60vh" }}><Loading></Loading></div>
     }
     if (user) {
         navigate(from, { replace: true });
@@ -38,7 +36,7 @@ const SignUp = () => {
     }
 
     return (
-        <div >
+        <div style={{ minHeight: "75vh" }}>
             <div className="login-form">
                 <form onSubmit={handleFirebaseSignUp}>
                     <div><h3 className='signin-title'>Sign Up</h3></div>
@@ -62,9 +60,7 @@ const SignUp = () => {
                         <input type="submit" />
                     </div>
                 </form>
-                <div >
-                    {loadingAnimation}
-                </div>
+
                 <div className='login-seperator '></div>
                 <SocialLogin></SocialLogin>
             </div>
