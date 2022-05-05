@@ -9,7 +9,7 @@ const Inventories = () => {
     console.log(products);
 
     return (
-        <div>
+        <div style={{ minHeight: "70vh" }}>
             {products?.length === 0 ? <Loading></Loading> : <div>
                 {
                     products.map(product =>

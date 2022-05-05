@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import useBanner from '../../../hooks/useBanner';
 import useProduct from '../../../hooks/useProduct';
+import BarChart from '../../Shared/BarChart/BarChart';
 import Loading from '../../Shared/Loading/Loading';
 import './Home.css';
 import ProductCard from './ProductCard/ProductCard';
@@ -17,7 +18,7 @@ const Home = () => {
     }
 
     return (
-        <div className='home-container'>
+        <div className='home-container' style={{ minHeight: "70vh" }}>
 
             {/* -----------------banner section ---------------------*/}
             <div className='homepage-banner-container'>
@@ -35,7 +36,7 @@ const Home = () => {
             </div>
 
             {/* ----------------Product Inventory Section---------------- */}
-            <div style={{ margin: "25px 0" }}><h2>Inventories</h2></div>
+            <div style={{ margin: "70px 0 30px 0" }}><h2>Inventories</h2></div>
             {products?.length === 0 ? <Loading></Loading> : <div>
                 <div className='product-card-container'>
                     {
@@ -51,7 +52,12 @@ const Home = () => {
             </div>}
 
 
-            {/* -----------------------Map Section-------------------- */}
+            {/* -----------------------Chart Section-------------------- */}
+
+            <div className='homepage-chart'>
+                <div> <h2>Inventory Item Overview</h2></div>
+                <BarChart products={products.slice(0, 6)}></BarChart>
+            </div>
 
         </div>
 

@@ -3,7 +3,7 @@ import './About.css';
 
 const About = () => {
     return (
-        <div>
+        <div style={{ minHeight: "70vh" }}>
             <h3>This is About page</h3>
         </div>
     );

@@ -2,7 +2,7 @@
 import { signOut } from 'firebase/auth';
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import './Header.css';
 import hamMenu from '../../.././icon/ham-icon.ico';

@@ -38,7 +38,7 @@ const SignUp = () => {
     }
 
     return (
-        <div>
+        <div >
             <div className="login-form">
                 <form onSubmit={handleFirebaseSignUp}>
                     <div><h3 className='signin-title'>Sign Up</h3></div>

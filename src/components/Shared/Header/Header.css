@@ -15,7 +15,7 @@
     justify-content: space-between;
     align-items: center;
     max-width: 1000px;
-    height: 80px;
+    /* height: 80px; */
     margin: 0 auto;
 }
 
@@ -51,7 +51,6 @@ a {
 @media only screen and (max-width: 768px) {
     .header-menu {
         display: none;
-
     }
 
     .header-menu-closed {
@@ -59,8 +58,8 @@ a {
         flex-direction: column;
         background-color: #1A1A1A;
         position: absolute;
-        top: 78px;
-        left: 0;
+        top: 50px;
+        left: -2px;
         width: 100vw;
         padding: 20px 0;
     }
