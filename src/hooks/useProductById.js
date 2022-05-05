@@ -13,9 +13,9 @@ const useProductById = (id) => {
                 console.log(error);
             })
 
-    }, [id])
+    }, [uri, product])
 
-    return product;
+    return [product, setProduct];
 }
 
 export default useProductById;

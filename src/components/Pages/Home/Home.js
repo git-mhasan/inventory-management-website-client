@@ -28,7 +28,7 @@ const Home = () => {
                         <h3 className='banner-slog'>{bannerItems[0]?.slog}</h3>
                         <p className='banner-desc'>{bannerItems[0]?.desc.length > 202 ? bannerItems[0]?.desc.slice(0, 202) + "..." : bannerItems[0]?.desc}</p>
                     </div>
-                    <button className="button">Details</button>
+                    <button className="button" onClick={navigateToManageInventories}>See All Items</button>
                 </div>
                 <div className="homepage-banner-right">
                     <img src={bannerItems[0]?.imageUrl} alt="" />
