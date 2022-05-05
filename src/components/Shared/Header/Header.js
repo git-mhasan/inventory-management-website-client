@@ -44,12 +44,12 @@ const Header = () => {
                     >
                         Home
                     </NavLink>
-                    <NavLink
+                    {/* <NavLink
                         to="/inventories"
                         className={({ isActive }) => (isActive ? 'selected menuItem' : 'unselected menuItem')}
                     >
                         Stock
-                    </NavLink>
+                    </NavLink> */}
                     <NavLink
                         to="/about"
                         className={({ isActive }) => (isActive ? 'selected menuItem' : 'unselected menuItem')}
@@ -68,19 +68,19 @@ const Header = () => {
                             :
                             <>
                                 <NavLink
-                                    to="/manageItems"
+                                    to="/inventories"
                                     className={({ isActive }) => (isActive ? 'selected menuItem' : 'unselected menuItem')}
                                 >
-                                    Manage Items
+                                    Manage Inventories
                                 </NavLink>
                                 <NavLink
-                                    to="/addItem"
+                                    to="/addnew"
                                     className={({ isActive }) => (isActive ? 'selected menuItem' : 'unselected menuItem')}
                                 >
                                     Add Item
                                 </NavLink>
                                 <NavLink
-                                    to="/myItems"
+                                    to="/myitems"
                                     className={({ isActive }) => (isActive ? 'selected menuItem' : 'unselected menuItem')}
                                 >
                                     My items

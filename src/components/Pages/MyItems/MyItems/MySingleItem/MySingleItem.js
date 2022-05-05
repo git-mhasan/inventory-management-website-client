@@ -1,7 +1,6 @@
 import React from 'react';
-import './Items.css';
 
-const Items = ({ products }) => {
+const MySingleItem = ({ products }) => {
     const { _id, name, price, img, quantity, sold, supplier } = products;
 
     return (
@@ -16,9 +15,9 @@ const Items = ({ products }) => {
                 <p>Sold: <b>{sold}</b> pcs</p>
                 <p>In stock: <b>{quantity}</b> pcs</p>
             </div>
-            <div style={{ width: '20%' }}> <button style={{ marginTop: "5px", width: "75px" }} className='button'>Delete</button></div>
+            <div style={{ width: '25%' }}> <button style={{ marginBottom: "5px", width: "75px" }} className='button'>Details</button> <button style={{ marginTop: "5px", width: "75px" }} className='button'>Delete</button></div>
         </div >
     );
 };
 
-export default Items;
+export default MySingleItem;

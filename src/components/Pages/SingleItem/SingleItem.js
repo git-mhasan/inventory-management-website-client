@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import useProductById from '../../../hooks/useProductById';
 import Loading from '../../Shared/Loading/Loading';
@@ -9,6 +9,8 @@ import './SingleItem.css';
 const SingleItem = () => {
     const { id } = useParams();
     const [product, setProduct] = useProductById(id);
+    const navigate = useNavigate();
+
     // const uri = `http://localhost:5000/product/${id}`;
     const uri = `https://secret-reaches-38095.herokuapp.com/product/${id}`;
 
@@ -39,6 +41,10 @@ const SingleItem = () => {
             toast("Please enter non-negative number to update stock.")
         }
         // console.log(quantity);
+    }
+
+    const navigateManageStock = (id) => {
+        navigate(`/inventories`);
     }
 
     const updateStock = async () => {
@@ -77,6 +83,7 @@ const SingleItem = () => {
                             </label>
                             <input type="submit" value="Restock" />
                         </form>
+                        <button className='button' onClick={navigateManageStock}>Manage Inventories</button>
                     </div>
                 </div>
             }

@@ -1,9 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import useProduct from '../../../hooks/useProduct';
-import Loading from '../../Shared/Loading/Loading';
+import useProduct from '../../../../hooks/useProduct';
+import Loading from '../../../Shared/Loading/Loading';
 import './Inventories.css';
-import Items from './Items/Items';
+import Items from '../Items/Items';
 
 const Inventories = () => {
     const products = useProduct();

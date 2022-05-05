@@ -1,11 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import useBanner from '../../../hooks/useBanner';
-import useProduct from '../../../hooks/useProduct';
-import BarChart from '../../Shared/BarChart/BarChart';
-import Loading from '../../Shared/Loading/Loading';
+import useBanner from '../../../../hooks/useBanner';
+import useProduct from '../../../../hooks/useProduct';
+import BarChart from '../../../Shared/BarChart/BarChart';
+import Loading from '../../../Shared/Loading/Loading';
 import './Home.css';
-import ProductCard from './ProductCard/ProductCard';
+import ProductCard from './../ProductCard/ProductCard';
 
 const Home = () => {
     const allProducts = useProduct();
