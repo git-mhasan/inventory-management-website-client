@@ -115,7 +115,7 @@ const Blogs = () => {
 
             </p>
 
-            <h3><span style={{ fontWeight: "700" }}>Question-2: </span>What is the purpose of jwt and how does it work ?</h3>
+            <h3><span style={{ fontWeight: "700" }}>Question-4: </span>What is the purpose of jwt and how does it work ?</h3>
             <p><span style={{ fontWeight: "700" }}>Answer: </span>
                 JWT stands for JSON Web Token. It is an open standard which is used to share security information between two parties, a client and a server or server to server.
                 Each JWT contains encoded JSON objects and a claim. The claim cannot be altered once the token is issued.
