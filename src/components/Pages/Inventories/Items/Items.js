@@ -14,7 +14,7 @@ const Items = ({ products, setUpdateConfirm }) => {
             .then(async resp => {
                 await resp.data.acknowledged
                     ?
-                    setUpdateConfirm(true)
+                    setUpdateConfirm(prev => !prev)
                     :
                     toast("Couldnot Deliver item.")
             })

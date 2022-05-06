@@ -22,9 +22,9 @@ const MySingleItem = ({ products, setUpdateConfirm }) => {
             .then(async resp => {
                 await resp.data.acknowledged
                     ?
-                    setUpdateConfirm(true)
+                    setUpdateConfirm(prev => !prev)
                     :
-                    toast("Couldnot Deliver item.")
+                    toast("Couldnot Deliver item.");
             })
             .catch(error => {
                 toast(error);
