@@ -1,7 +1,36 @@
+import axios from 'axios';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
-const MySingleItem = ({ products }) => {
-    const { _id, name, price, img, quantity, sold, supplier } = products;
+const MySingleItem = ({ products, setUpdateConfirm }) => {
+    const navigate = useNavigate();
+    const { _id, name, img, quantity, sold } = products;
+
+
+
+    const handleNavigate = (id) => {
+        navigate(`/inventory/${id}`)
+    }
+
+
+    const handleProductDelete = async (id) => {
+        // const uri = `http://localhost:5000/product/${id}`;
+        const uri = `https://secret-reaches-38095.herokuapp.com/product/${id}`;
+
+        await axios.delete(uri)
+            .then(async resp => {
+                await resp.data.acknowledged
+                    ?
+                    setUpdateConfirm(true)
+                    :
+                    toast("Couldnot Deliver item.")
+            })
+            .catch(error => {
+                toast(error);
+            })
+    }
+
 
     return (
         <div className='items-card'>
@@ -15,7 +44,7 @@ const MySingleItem = ({ products }) => {
                 <p>Sold: <b>{sold}</b> pcs</p>
                 <p>In stock: <b>{quantity}</b> pcs</p>
             </div>
-            <div style={{ width: '25%' }}> <button style={{ marginBottom: "5px", width: "75px" }} className='button'>Details</button> <button style={{ marginTop: "5px", width: "75px" }} className='button'>Delete</button></div>
+            <div style={{ width: '25%' }}> <button style={{ marginBottom: "5px", width: "75px" }} className='button' onClick={() => { handleNavigate(_id) }}>Details</button> <button style={{ marginTop: "5px", width: "75px" }} className='button' onClick={() => { handleProductDelete(_id) }}>Delete</button></div>
         </div >
     );
 };

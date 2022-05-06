@@ -9,7 +9,7 @@ import ProductCard from './../ProductCard/ProductCard';
 import useGmap from '../../../../hooks/useGmap';
 
 const Home = () => {
-    const allProducts = useProduct();
+    const [allProducts] = useProduct();
     const navigate = useNavigate();
     const bannerItems = useBanner();
     const gmap = useGmap();
@@ -65,9 +65,9 @@ const Home = () => {
             {/* -----------------------Google Map Section-------------------- */}
 
             <div className='homepage-map'>
-                <div> <h2>Our Location</h2></div>
+                <div style={{ margin: "30px" }}> <h2>Our Location</h2></div>
                 <div className='map-image'>
-                    <img style={{ width: "100%" }} src={gmap[0].imageUrl} alt="" />
+                    <img style={{ width: "100%" }} src={gmap[0]?.imageUrl} alt="" />
                 </div>
             </div>
 

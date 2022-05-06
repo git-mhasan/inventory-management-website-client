@@ -66,11 +66,14 @@
 
 .homepage-map {
     margin: 50px auto;
+    border: 1px solid orange;
+
 }
 
 .map-image {
     max-width: 900px;
     margin: 25px auto;
+    border: 1px solid darkgray;
 }
 
 @media only screen and (max-width: 600px) {

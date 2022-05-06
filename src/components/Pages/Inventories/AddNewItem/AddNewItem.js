@@ -34,7 +34,7 @@ const AddNewItem = () => {
                 data.acknowledged ? toast(newProduct.name + " inserted successfully.") : toast("Can not insert data to Database.");
                 data.acknowledged && resetInput();
                 // const { data } = response;
-                console.log(data);
+                // console.log(data);
             })
             .catch(function (error) {
                 toast(error.message);

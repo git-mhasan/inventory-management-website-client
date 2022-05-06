@@ -1,0 +1,16 @@
+.my-items-container {
+    margin-bottom: 25px;
+    /* align-items: center;
+    justify-content: center; */
+}
+
+.user-imformation {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    /* Width: 90%; */
+    margin: 25px auto;
+    max-width: 1000px;
+    border-bottom: 1px solid orange;
+    /* background-color: antiquewhite; */
+}

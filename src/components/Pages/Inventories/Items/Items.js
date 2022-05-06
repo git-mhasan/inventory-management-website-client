@@ -1,8 +1,27 @@
+import axios from 'axios';
 import React from 'react';
+import { toast } from 'react-toastify';
 import './Items.css';
 
-const Items = ({ products }) => {
-    const { _id, name, price, img, quantity, sold, supplier } = products;
+const Items = ({ products, setUpdateConfirm }) => {
+    const { _id, name, img, quantity, sold } = products;
+
+    const handleProductDelete = async (id) => {
+        // const uri = `http://localhost:5000/product/${id}`;
+        const uri = `https://secret-reaches-38095.herokuapp.com/product/${id}`;
+
+        await axios.delete(uri)
+            .then(async resp => {
+                await resp.data.acknowledged
+                    ?
+                    setUpdateConfirm(true)
+                    :
+                    toast("Couldnot Deliver item.")
+            })
+            .catch(error => {
+                toast(error);
+            })
+    }
 
     return (
         <div className='items-card'>
@@ -16,7 +35,7 @@ const Items = ({ products }) => {
                 <p>Sold: <b>{sold}</b> pcs</p>
                 <p>In stock: <b>{quantity}</b> pcs</p>
             </div>
-            <div style={{ width: '20%' }}> <button style={{ marginTop: "5px", width: "75px" }} className='button'>Delete</button></div>
+            <div style={{ width: '20%' }}> <button style={{ width: "75px" }} className='button' onClick={() => { handleProductDelete(_id) }}>Delete</button></div>
         </div >
     );
 };

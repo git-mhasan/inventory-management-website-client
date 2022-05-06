@@ -6,7 +6,7 @@ import './Inventories.css';
 import Items from '../Items/Items';
 
 const Inventories = () => {
-    const products = useProduct();
+    const [products, setUpdateConfirm] = useProduct();
     const navigate = useNavigate();
     const handleNavigateToAddItem = () => {
         navigate('/addnew');
@@ -19,6 +19,7 @@ const Inventories = () => {
                         <Items
                             key={product._id}
                             products={product}
+                            setUpdateConfirm={setUpdateConfirm}
                         ></Items>
                     )
                 }
