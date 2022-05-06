@@ -1,4 +1,3 @@
-import { async } from '@firebase/util';
 import axios from 'axios';
 import React from 'react';
 import { toast } from 'react-toastify';
@@ -6,10 +5,11 @@ import "./AddNewItem.css"
 
 const AddNewItem = () => {
 
-    const uri = "http://localhost:5000/products";
-    // const uri = `https://secret-reaches-38095.herokuapp.com/product`;
+    // const uri = "http://localhost:5000/product";
+    const uri = `https://secret-reaches-38095.herokuapp.com/product`;
 
     const handleAddNewItem = async (event) => {
+
         event.preventDefault();
         const newProduct = {
             name: event.target[0].value,
@@ -20,18 +20,27 @@ const AddNewItem = () => {
             quantity: event.target[5].value,
             sold: 0
         }
+        const resetInput = () => {
+            event.target[0].value = "";
+            event.target[1].value = "";
+            event.target[2].value = "";
+            event.target[3].value = "";
+            event.target[4].value = "";
+            event.target[5].value = "";
+        }
 
         await axios.post(uri, newProduct)
             .then(function ({ data }) {
+                data.acknowledged ? toast(newProduct.name + " inserted successfully.") : toast("Can not insert data to Database.");
+                data.acknowledged && resetInput();
                 // const { data } = response;
                 console.log(data);
             })
             .catch(function (error) {
-                console.log(error);
+                toast(error.message);
             });
-        // .then(async resp => await console.log(resp))
-        // .catch(error => toast(error.message));
-        // console.log({ newProduct });
+
+
     }
     return (
         <div className="addnew-form">

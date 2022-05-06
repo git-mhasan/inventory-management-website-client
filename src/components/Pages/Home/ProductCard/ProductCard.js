@@ -18,7 +18,7 @@ const ProductCard = ({ product }) => {
             <p>Supplier: {supplier}</p>
             <p>Price: Tk. <b>{price}</b></p>
             <p>In stock: {quantity} pcs</p>
-            <button className='button' onClick={() => navigateManageStock(_id)}>Manage Inventories</button>
+            <button className='button' onClick={() => navigateManageStock(_id)}>Update Stock</button>
         </div>
     );
 };

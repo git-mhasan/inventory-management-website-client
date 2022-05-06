@@ -59,6 +59,16 @@ const Home = () => {
                 <BarChart products={products.slice(0, 6)}></BarChart>
             </div>
 
+
+            {/* -----------------------Google Map Section-------------------- */}
+
+            <div className='homepage-map'>
+                <div> <h2>Our Location</h2></div>
+                <div className='map-image'>
+                    <img src="/public/images/gmap-1.png" alt="" />
+                </div>
+            </div>
+
         </div>
 
 

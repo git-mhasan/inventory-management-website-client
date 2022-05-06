@@ -1,0 +1,12 @@
+.about-page {
+    margin: 20px auto;
+    min-height: 70vh;
+}
+
+.about-divider {
+    margin: 20px auto;
+    width: 35%;
+    height: 1px;
+    background-color: black;
+    /* background-color: #fffee2; */
+}

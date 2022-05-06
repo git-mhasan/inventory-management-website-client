@@ -15,6 +15,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import RequireAuth from './components/Shared/RequireAuth/RequireAuth';
 import AddNewItem from './components/Pages/Inventories/AddNewItem/AddNewItem';
 import MyItems from './components/Pages/MyItems/MyItems/MyItems';
+import Blogs from './components/Pages/Blogs/Blogs';
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
         <Route path="/inventory/:id" element={<RequireAuth>
           <SingleItem />
         </RequireAuth>} />
+        <Route path="/blogs" element={<Blogs />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />

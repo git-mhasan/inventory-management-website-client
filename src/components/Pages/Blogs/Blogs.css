@@ -1,0 +1,11 @@
+.blog-container {
+    max-width: 80%;
+    text-align: justify;
+    margin: 20px auto;
+}
+
+@media only screen and (max-width: 600px) {
+    .blog-container {
+        max-width: 95%;
+    }
+}
