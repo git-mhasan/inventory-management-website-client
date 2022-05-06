@@ -6,11 +6,13 @@ import BarChart from '../../../Shared/BarChart/BarChart';
 import Loading from '../../../Shared/Loading/Loading';
 import './Home.css';
 import ProductCard from './../ProductCard/ProductCard';
+import useGmap from '../../../../hooks/useGmap';
 
 const Home = () => {
     const allProducts = useProduct();
     const navigate = useNavigate();
     const bannerItems = useBanner();
+    const gmap = useGmap();
 
     const products = allProducts?.length > 6 ? [...allProducts].slice(0, 6) : [...allProducts];
     const navigateToManageInventories = () => {
@@ -65,7 +67,7 @@ const Home = () => {
             <div className='homepage-map'>
                 <div> <h2>Our Location</h2></div>
                 <div className='map-image'>
-                    <img src="/public/images/gmap-1.png" alt="" />
+                    <img style={{ width: "100%" }} src={gmap[0].imageUrl} alt="" />
                 </div>
             </div>
 

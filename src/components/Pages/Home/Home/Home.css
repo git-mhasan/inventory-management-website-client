@@ -64,6 +64,15 @@
     padding: 30px;
 }
 
+.homepage-map {
+    margin: 50px auto;
+}
+
+.map-image {
+    max-width: 900px;
+    margin: 25px auto;
+}
+
 @media only screen and (max-width: 600px) {
 
     .homepage-banner-container {

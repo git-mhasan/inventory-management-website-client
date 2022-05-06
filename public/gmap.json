@@ -1,0 +1,17 @@
+[
+    {
+        "id": "1",
+        "title": "GMap Large",
+        "imageUrl": "./images/gmap-1.png"
+    },
+    {
+        "id": "2",
+        "title": "GMap Medium",
+        "imageUrl": "./images/gmap-2.png"
+    },
+    {
+        "id": "3",
+        "title": "GMap Small",
+        "imageUrl": "./images/gmap-3.png"
+    }
+]
