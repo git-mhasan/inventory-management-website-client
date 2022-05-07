@@ -7,11 +7,13 @@
 }
 
 .single-item-card-right {
+    width: 60%;
     padding: 25px;
     background-color: #fffee2;
 }
 
 .single-item-card-left {
+    width: 40%;
     border: 1px solid orange;
     padding: 25px;
 }

@@ -10,17 +10,27 @@ const Items = ({ products, setUpdateConfirm }) => {
         // const uri = `http://localhost:5000/product/${id}`;
         const uri = `https://secret-reaches-38095.herokuapp.com/product/${id}`;
 
-        await axios.delete(uri)
-            .then(async resp => {
-                await resp.data.acknowledged
-                    ?
-                    setUpdateConfirm(prev => !prev)
-                    :
-                    toast("Couldnot Deliver item.")
-            })
-            .catch(error => {
-                toast(error);
-            })
+        // window.confirm("Do you really want to delete this record?");
+
+        if (window.confirm("Do you really want to delete this record?") === true) {
+            await axios.delete(uri)
+                .then(async resp => {
+                    await resp.data.acknowledged
+                        ?
+                        setUpdateConfirm(prev => !prev)
+                        :
+                        toast("Couldnot Delete item.");
+                    resp.data.acknowledged && toast("Record Deleted!")
+
+                })
+                .catch(error => {
+                    toast(error);
+                })
+        } else {
+            toast("You canceled!");
+        }
+
+
     }
 
     return (

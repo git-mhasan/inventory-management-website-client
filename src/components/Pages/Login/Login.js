@@ -1,7 +1,7 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
-import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import './Login.css';
 import auth from '../../../firebase.init';
 import { toast } from 'react-toastify';

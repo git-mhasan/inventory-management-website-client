@@ -1,12 +1,20 @@
 import axios from 'axios';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
+import auth from '../../../../firebase.init';
+import Loading from '../../../Shared/Loading/Loading';
 import "./AddNewItem.css"
 
 const AddNewItem = () => {
+    const [user, loading] = useAuthState(auth);
 
     // const uri = "http://localhost:5000/product";
     const uri = `https://secret-reaches-38095.herokuapp.com/product`;
+
+    if (loading) {
+        return <Loading></Loading>
+    }
 
     const handleAddNewItem = async (event) => {
 
@@ -18,21 +26,14 @@ const AddNewItem = () => {
             supplier: event.target[3].value,
             price: event.target[4].value,
             quantity: event.target[5].value,
-            sold: 0
-        }
-        const resetInput = () => {
-            event.target[0].value = "";
-            event.target[1].value = "";
-            event.target[2].value = "";
-            event.target[3].value = "";
-            event.target[4].value = "";
-            event.target[5].value = "";
+            manager: user?.email,
+            sold: "0"
         }
 
         await axios.post(uri, newProduct)
             .then(function ({ data }) {
                 data.acknowledged ? toast(newProduct.name + " inserted successfully.") : toast("Can not insert data to Database.");
-                data.acknowledged && resetInput();
+                data.acknowledged && event.target.reset();
                 // const { data } = response;
                 // console.log(data);
             })

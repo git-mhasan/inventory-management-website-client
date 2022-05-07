@@ -16,14 +16,16 @@ const SingleItem = () => {
 
     const { _id, name, price, img, quantity, desc, supplier, sold } = product;
 
-    const updateApiCall = async (product) => {
+    const updateApiCall = async (product, event) => {
         await axios.put(uri, product)
-            .then(async resp => {
-                await resp.data.acknowledged
+            .then(resp => {
+                resp.data.acknowledged
                     ?
                     setProduct(product)
                     :
-                    toast("Couldnot Deliver item.")
+                    toast("Couldnot Deliver item.");
+                resp.data.acknowledged && event.target.reset();
+                resp.data.acknowledged && toast("Stock Updated Successfully!")
             })
             .catch(error => {
                 toast(error);
@@ -35,8 +37,8 @@ const SingleItem = () => {
         const inputQuantity = parseInt(event.target[0].value);
         if (inputQuantity > 0) {
             product.quantity = (parseInt(quantity) + inputQuantity).toString();
-            updateApiCall(product);
-            event.target[0].value = '';
+            updateApiCall(product, event);
+            // event.target[0].value = '';
         } else {
             toast("Please enter non-negative number to update stock.")
         }
@@ -64,7 +66,7 @@ const SingleItem = () => {
                     className='single-item-card'>
                     <div className='single-item-card-left'>
                         <small>Product id: {_id}</small>
-                        <img src={img} alt="" />
+                        <img style={{ width: "100%" }} src={img} alt="" />
                         <p>Unit Price: {price} tk.</p>
                         <p>Sold: {sold} psc</p>
                         <p>In stock: {quantity} pcs</p>
