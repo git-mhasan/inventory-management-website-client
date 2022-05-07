@@ -18,19 +18,20 @@ const MyItems = () => {
     // const uri = `http://localhost:5000/product?email=${user?.email}`;
     const uri = `https://secret-reaches-38095.herokuapp.com/product?email=${user?.email}`;
 
-    console.log(uri);
-
     useEffect(() => {
-
-        async function getUser() {
+        async function getProduct() {
             try {
-                const response = await axios.get(uri);
+                const response = await axios.get(uri, {
+                    headers: {
+                        authorization: `Bearer ${localStorage.getItem("accessToken")}`
+                    }
+                });
                 setProduct(response.data);
             } catch (error) {
                 toast(error);
             }
         }
-        getUser();
+        getProduct();
 
     }, [uri, updateConfirm])
 
@@ -49,18 +50,22 @@ const MyItems = () => {
                 <div><h4>{user ? user?.displayName : "User"}</h4></div>
                 <div><h4>{user ? user?.email : "user@email.com"}</h4></div>
             </div>
-            {products?.length === 0 ? <Loading></Loading> : <div>
-                {
-                    products.map(product =>
-                        <MySingleItem
-                            key={product._id}
-                            products={product}
-                            setUpdateConfirm={setUpdateConfirm}
-                        ></MySingleItem>
-                    )
-                }
-                <button className='button' onClick={handleNavigateToAddItem}>Add New Item</button>
-            </div>
+            {products?.length === 0
+                ?
+                <div>
+                    <h1>No Products Found!</h1>
+                </div> : <div>
+                    {
+                        products.map(product =>
+                            <MySingleItem
+                                key={product._id}
+                                products={product}
+                                setUpdateConfirm={setUpdateConfirm}
+                            ></MySingleItem>
+                        )
+                    }
+                    <button className='button' onClick={handleNavigateToAddItem}>Add New Item</button>
+                </div>
             }
         </div>
     );

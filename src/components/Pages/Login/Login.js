@@ -6,6 +6,7 @@ import './Login.css';
 import auth from '../../../firebase.init';
 import { toast } from 'react-toastify';
 import Loading from '../../Shared/Loading/Loading';
+import axios from 'axios';
 
 
 const Login = () => {
@@ -17,13 +18,18 @@ const Login = () => {
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
 
+    // const uri = "http://localhost:5000/login";
+    const uri = "https://secret-reaches-38095.herokuapp.com/login";
 
-    const handleLogin = event => {
+    const handleLogin = async event => {
         event.preventDefault();
         const email = event.target[0].value;
         const password = event.target[1].value;
 
-        signInWithEmailAndPassword(email, password);
+        await signInWithEmailAndPassword(email, password);
+        const { data } = await axios.post(uri, { email });
+        localStorage.setItem('accessToken', data);
+        // console.log(data);
     }
 
     const handlePassReset = async (event) => {
@@ -34,7 +40,6 @@ const Login = () => {
         } else {
             toast('Please write your email.');
         }
-        // alert("password reset!");
     }
 
 
@@ -57,7 +62,6 @@ const Login = () => {
                     <div className="input-container">
                         <label>Email: </label>
                         <input ref={emailRef} type="email" name="email" required />
-
                     </div>
                     <div className="input-container">
                         <label>Password: </label>
@@ -68,9 +72,8 @@ const Login = () => {
                     <div className="button-container">
                         <input type="submit" />
                     </div>
-
                 </form>
-                {/* {loadingAnimation} */}
+
                 <div className='login-seperator '></div>
 
                 <SocialLogin ></SocialLogin>

@@ -10,15 +10,19 @@ const useProduct = () => {
 
     useEffect(() => {
 
-        async function getUser() {
+        async function getProduct() {
             try {
-                const response = await axios.get(uri);
+                const response = await axios.get(uri, {
+                    headers: {
+                        authorization: `Bearer ${localStorage.getItem("accessToken")}`
+                    }
+                });
                 setProduct(response.data);
             } catch (error) {
                 toast(error);
             }
         }
-        getUser();
+        getProduct();
 
     }, [updateConfirm])
 
