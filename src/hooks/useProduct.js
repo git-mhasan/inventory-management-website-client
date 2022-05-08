@@ -12,11 +12,7 @@ const useProduct = () => {
 
         async function getProduct() {
             try {
-                const response = await axios.get(uri, {
-                    headers: {
-                        authorization: `Bearer ${localStorage.getItem("accessToken")}`
-                    }
-                });
+                const response = await axios.get(uri);
                 setProduct(response.data);
             } catch (error) {
                 toast(error);
