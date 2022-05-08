@@ -6,15 +6,18 @@ import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
 import './SignUp.css';
 import { toast } from 'react-toastify';
 import Loading from '../../Shared/Loading/Loading';
+import axios from 'axios';
 
 const SignUp = () => {
-    let loadingAnimation;
-    // let errorMessage;
+
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
     const [createUserWithEmailAndPassword, user, loading, errorSignUp] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
     const [updateProfile, updating, errorProfileUpdate] = useUpdateProfile(auth);
+
+    const uri = "http://localhost:5000/login";
+    // const uri = "https://secret-reaches-38095.herokuapp.com/login";
 
     const handleFirebaseSignUp = async (event) => {
         event.preventDefault();
@@ -23,6 +26,9 @@ const SignUp = () => {
         const password = event.target[2].value;
         await createUserWithEmailAndPassword(email, password);
         await updateProfile({ displayName: name });
+
+        const { data } = await axios.post(uri, { email });
+        localStorage.setItem('accessToken', data);
     }
 
     if (loading || updating) {

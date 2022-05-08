@@ -16,7 +16,7 @@ const Login = () => {
     const navigate = useNavigate();
     const emailRef = useRef("");
     const location = useLocation();
-    const from = location.state?.from?.pathname || "/";
+    const from = location.state?.from?.pathname || "/home";
 
     // const uri = "http://localhost:5000/login";
     const uri = "https://secret-reaches-38095.herokuapp.com/login";
